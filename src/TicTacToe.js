@@ -5,12 +5,21 @@ function TicTacToe() {
   // Board inicial
   const emptyBoard = Array(9).fill("");
   const [board, setBoard] = useState(emptyBoard);
+  // Definir atual jogador
+  const [currentPlayer, setCurrentPlayer] = useState("X");
+
   // Função para retornar a casa do clique
   const handleCellClick = (index) => {
     // Retornar o board com o clique atualizado
     // O classname também muda para "cell X" ou "cell O"
-    setBoard(board.map((item, itemIndex) => itemIndex === index ? "X" : item));
-  }
+    setBoard(
+      board.map((item, itemIndex) => 
+        itemIndex === index ? currentPlayer : item)
+    );
+
+    // Trocar atual jogador
+    setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
+  };
 
   return (
     <main>
