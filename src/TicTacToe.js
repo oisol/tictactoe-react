@@ -54,6 +54,12 @@ function TicTacToe() {
     });
   };
 
+  const resetGame = () => {
+    setCurrentPlayer("X");
+    setBoard(emptyBoard);
+    setWinner(null);
+  };
+
   return (
     <main>
       <h1 className='title'>Jogo da Velha</h1>
@@ -75,6 +81,7 @@ function TicTacToe() {
             <h2 className='winner-message'>
               <span className={winner}>{winner}</span> venceu!
             </h2>
+            <button onClick={resetGame}>Resetar</button>
         </footer>
       }
     </main>
