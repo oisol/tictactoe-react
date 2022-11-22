@@ -68,3 +68,19 @@ body {
 .cell.X {
   background-color: var(--X-color);
 }
+
+footer {
+  text-align: center;
+}
+
+.winner-message {
+  margin: 2rem;
+}
+
+.winner-message span.O {
+  color: var(--O-color);
+}
+
+.winner-message span.X {
+  color: var(--X-color);
+}

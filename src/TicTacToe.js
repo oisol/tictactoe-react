@@ -69,6 +69,14 @@ function TicTacToe() {
           </div>
         ))}
       </div>
+      
+      {winner &&      
+        <footer>
+            <h2 className='winner-message'>
+              <span className={winner}>{winner}</span> venceu!
+            </h2>
+        </footer>
+      }
     </main>
   );
 }
