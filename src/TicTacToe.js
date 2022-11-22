@@ -8,7 +8,7 @@ function TicTacToe() {
   // Definir atual jogador
   const [currentPlayer, setCurrentPlayer] = useState("X");
   // Definir Ganhador
-  const [winner, setWinner] = useState();
+  const [winner, setWinner] = useState(null);
   // Verificar se houve ganhador
   useEffect(() => {
     checkWinner()
@@ -52,8 +52,18 @@ function TicTacToe() {
       if (cells.every(cell => cell === "O")) setWinner("O");
       if (cells.every(cell => cell === "X")) setWinner("X");
     });
+
+    checkDraw();
   };
 
+  // Verificar empate
+  const checkDraw = () => {
+    if (board.every(item => item != "")) {
+      setWinner("D");
+    }
+  }
+
+  // Resetar jogo
   const resetGame = () => {
     setCurrentPlayer("X");
     setBoard(emptyBoard);
@@ -78,9 +88,15 @@ function TicTacToe() {
       
       {winner &&      
         <footer>
+          {winner === "D" ?
+            <h2 className='winner-message'>
+              <span className={winner}>Empatou!</span>
+            </h2>
+          :
             <h2 className='winner-message'>
               <span className={winner}>{winner}</span> venceu!
             </h2>
+          }
             <button onClick={resetGame}>Resetar</button>
         </footer>
       }

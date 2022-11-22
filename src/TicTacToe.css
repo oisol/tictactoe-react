@@ -1,6 +1,7 @@
 :root {
   --O-color: #2196f3;
   --X-color: #f44336;
+  --D-color: #777;
   --green: #4caf50;
 }
 
@@ -84,6 +85,10 @@ footer {
 
 .winner-message span.X {
   color: var(--X-color);
+}
+
+.winner-message span.D {
+  color: var(--D-color);
 }
 
 button {
