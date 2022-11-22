@@ -33,6 +33,10 @@ body {
   gap: 1rem;
 }
 
+.board.game-over {
+  opacity: 0.6;
+}
+
 .cell {
   display: grid;
   align-items: center;
@@ -52,7 +56,7 @@ body {
 }
 
 /* Quando estiver preenchido */
-.cell.O, .cell.X {
+.cell.O, .cell.X, .game-over .cell {
   cursor: not-allowed;
   user-select: none;
 }

@@ -7,6 +7,8 @@ function TicTacToe() {
   const [board, setBoard] = useState(emptyBoard);
   // Definir atual jogador
   const [currentPlayer, setCurrentPlayer] = useState("X");
+  // Definir Ganhador
+  const [winner, setWinner] = useState();
   // Verificar se houve ganhador
   useEffect(() => {
     checkWinner()
@@ -14,6 +16,9 @@ function TicTacToe() {
 
   // Função para retornar a casa do clique
   const handleCellClick = (index) => {
+    // Não permitir jogar após concluído
+    if (winner) return null;
+
     // Não permitir jogar 2 vezes na mesma casa
     if (board[index] != "") return null;
 
@@ -28,6 +33,7 @@ function TicTacToe() {
     setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
   };
 
+  // Possibilidades de ganhar o jogo e checando se foi ganho
   const checkWinner = () => {
     const possibleWaysToWin = [
       [board[0], board[1], board[2]],
@@ -43,8 +49,8 @@ function TicTacToe() {
     ];
 
     possibleWaysToWin.forEach(cells => {
-      if (cells.every(cell => cell === "O")) alert("O venceu!")
-      if (cells.every(cell => cell === "X")) alert("X venceu!")
+      if (cells.every(cell => cell === "O")) setWinner("O");
+      if (cells.every(cell => cell === "X")) setWinner("X");
     });
   };
 
@@ -52,7 +58,7 @@ function TicTacToe() {
     <main>
       <h1 className='title'>Jogo da Velha</h1>
 
-      <div className='board'>
+      <div className={`board ${winner ? "game-over" : ""}`}>
         {board.map((item, index) => (
           <div 
             key={index}
