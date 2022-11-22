@@ -5,6 +5,12 @@ function TicTacToe() {
   // Board inicial
   const emptyBoard = Array(9).fill("");
   const [board, setBoard] = useState(emptyBoard);
+  // Função para retornar a casa do clique
+  const handleCellClick = (index) => {
+    // Retornar o board com o clique atualizado
+    // O classname também muda para "cell X" ou "cell O"
+    setBoard(board.map((item, itemIndex) => itemIndex === index ? "X" : item));
+  }
 
   return (
     <main>
@@ -15,6 +21,7 @@ function TicTacToe() {
           <div 
             key={index}
             className={`cell ${item}`}
+            onClick={() => handleCellClick(index)}
           >
             {item}
           </div>

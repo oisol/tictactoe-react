@@ -1,3 +1,8 @@
+:root {
+  --O-color: #2196f3;
+  --X-color: #f44336;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,4 +45,21 @@ body {
   color: #00000066;
 
   cursor: pointer;
+}
+/* Qunado não estiver preenchido */
+.cell:not(.O):not(.X):hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Quando estiver preenchido */
+.cell.O, .cell.X {
+  cursor: not-allowed;
+}
+
+.cell.O {
+  background-color: var(--O-color);
+}
+
+.cell.X {
+  background-color: var(--X-color);
 }
