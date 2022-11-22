@@ -54,6 +54,7 @@ body {
 /* Quando estiver preenchido */
 .cell.O, .cell.X {
   cursor: not-allowed;
+  user-select: none;
 }
 
 .cell.O {
