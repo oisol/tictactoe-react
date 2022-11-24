@@ -63,6 +63,7 @@ function TicTacToe() {
   };
 
   // Verificar empate
+  
   const checkDraw = () => {
     if (winner !== null) {
       if (board.every(item => item != "")) {

@@ -30,8 +30,8 @@ body {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(3, 160px);
+  grid-template-columns: repeat(3, 240px);
+  grid-template-rows: repeat(3, 200px);
   gap: 1rem;
 }
 
@@ -100,4 +100,38 @@ button {
   background-color: var(--green);
   color: #fff;
   font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .board {
+    justify-content: center;
+    gap:0.5rem;
+    grid-template-columns:repeat(3,100px);
+    grid-template-rows:repeat(3,100px)
+  }
+
+  .cell {
+    font-size:2rem;
+  }
+}
+
+@media screen and (max-height: 767px) {
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .board {
+    justify-content: center;
+    gap:0.8rem;
+    grid-template-columns:repeat(3,150px);
+    grid-template-rows:repeat(3,130px)
+  }
+  
+  .cell {
+    font-size:3rem;
+  }
 }
