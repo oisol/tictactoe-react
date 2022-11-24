@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import './TicTacToe.css';
 
+// 
+// TODO
+// 1.Adicionar contador de pontos
+// 2.Se referenciar a X ou O como jogador 1 e jogador 2 e anunciar a vez
+//
+
 function TicTacToe() {
   // Board inicial
   const emptyBoard = Array(9).fill("");
@@ -58,8 +64,10 @@ function TicTacToe() {
 
   // Verificar empate
   const checkDraw = () => {
-    if (board.every(item => item != "")) {
-      setWinner("D");
+    if (winner !== null) {
+      if (board.every(item => item != "")) {
+        setWinner("D");
+      }
     }
   }
 
