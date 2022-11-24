@@ -17,13 +17,13 @@ function TicTacToe() {
   const [winner, setWinner] = useState(null);
   // Verificar se houve ganhador
   useEffect(() => {
-    checkWinner()
+    checkWinner();
   }, [board]);
 
   // Função para retornar a casa do clique
   const handleCellClick = (index) => {
     // Não permitir jogar após concluído
-    if (winner) return null;
+    if (winner) return null; 
 
     // Não permitir jogar 2 vezes na mesma casa
     if (board[index] != "") return null;
@@ -55,22 +55,25 @@ function TicTacToe() {
     ];
 
     possibleWaysToWin.forEach(cells => {
-      if (cells.every(cell => cell === "O")) setWinner("O");
-      if (cells.every(cell => cell === "X")) setWinner("X");
+      if (cells.every(cell => cell === "O")){
+        return setWinner("O");
+      }if (cells.every(cell => cell === "X")){
+        return setWinner("X");
+      }else {
+        if (winner === null) {
+          checkDraw();
+        }
+      }; 
     });
 
-    checkDraw();
   };
 
   // Verificar empate
-  
   const checkDraw = () => {
-    if (winner !== null) {
-      if (board.every(item => item != "")) {
-        setWinner("D");
-      }
+    if (board.every(item => item != "")) {
+      setWinner("D")
     }
-  }
+  };
 
   // Resetar jogo
   const resetGame = () => {
@@ -78,6 +81,11 @@ function TicTacToe() {
     setBoard(emptyBoard);
     setWinner(null);
   };
+
+  // Roda a função de checar vençodor para corrigir bug de sempre empate na última jogada
+  if (winner === 'D'){
+    checkWinner()
+  }
 
   return (
     <main>
