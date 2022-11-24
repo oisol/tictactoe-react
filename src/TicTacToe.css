@@ -80,16 +80,23 @@ footer {
   margin: 2rem;
 }
 
-.winner-message span.O {
+.winner-message span.O, .current-player span.O {
   color: var(--O-color);
 }
 
-.winner-message span.X {
+.winner-message span.X, .current-player span.X {
   color: var(--X-color);
 }
 
 .winner-message span.D {
   color: var(--D-color);
+}
+
+.current-player {
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(61, 50, 50);
+  margin-bottom: 1rem;
 }
 
 button {

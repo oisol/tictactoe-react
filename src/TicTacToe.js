@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import './TicTacToe.css';
 
-// 
 // TODO
 // 1.Adicionar contador de pontos
-// 2.Se referenciar a X ou O como jogador 1 e jogador 2 e anunciar a vez
-//
+// 
 
 function TicTacToe() {
   // Board inicial
@@ -55,6 +53,7 @@ function TicTacToe() {
     ];
 
     possibleWaysToWin.forEach(cells => {
+
       if (cells.every(cell => cell === "O")){
         return setWinner("O");
       }if (cells.every(cell => cell === "X")){
@@ -64,6 +63,7 @@ function TicTacToe() {
           checkDraw();
         }
       }; 
+
     });
 
   };
@@ -82,7 +82,7 @@ function TicTacToe() {
     setWinner(null);
   };
 
-  // Roda a função de checar vençodor para corrigir bug de sempre empate na última jogada
+  // Roda a função de checar vencedor para corrigir bug de sempre empate na última jogada
   if (winner === 'D'){
     checkWinner()
   }
@@ -90,6 +90,22 @@ function TicTacToe() {
   return (
     <main>
       <h1 className='title'>Jogo da Velha</h1>
+
+      {
+        !winner ? 
+
+        currentPlayer === "X" ?
+          <h2 className='current-player'>
+            jogador <span className={currentPlayer}>1</span>
+          </h2>
+        :
+          <h2 className='current-player'>
+            jogador <span className={currentPlayer}>2</span>
+          </h2>
+
+        : 
+        <h2></h2>
+      }
 
       <div className={`board ${winner ? "game-over" : ""}`}>
         {board.map((item, index) => (
