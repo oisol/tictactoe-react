@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './TicTacToe.css';
 
 // TODO
-// 1.Adicionar contador de pontos
+// 1.Adicionar contador de pontos via state
 // 
 
 function TicTacToe() {
@@ -13,10 +13,28 @@ function TicTacToe() {
   const [currentPlayer, setCurrentPlayer] = useState("X");
   // Definir Ganhador
   const [winner, setWinner] = useState(null);
+  // Placar de pontos
+  const [scoreX, setScoreX] = useState([0]);
+  const [scoreO, setScoreO] = useState([0]);
+
   // Verificar se houve ganhador
   useEffect(() => {
     checkWinner();
   }, [board]);
+
+  // Verificar Score
+  useEffect(() => {
+    checkScore();
+  }, [winner]);
+
+  // Pontuar Scores
+  const checkScore = () => {
+    if(winner === 'X'){
+      setScoreX([scoreX[0] +=1]);
+    }else if(winner === 'O') {
+      setScoreO([scoreO[0] +=1]);
+    }
+  };
 
   // Função para retornar a casa do clique
   const handleCellClick = (index) => {
@@ -117,6 +135,23 @@ function TicTacToe() {
             {item}
           </div>
         ))}
+      </div>
+
+      <div className='score'>
+        {winner != 'X' ? 
+          <h3>Jogador 1 <span className='score-X'>{scoreX}</span></h3>
+          :
+          <h3>Jogador 1 <span className='score-X animation'>{scoreX}</span></h3>
+        }
+        <p>X</p>
+        {winner != 'O' ?
+          <h3>Jogador 2 <span className='score-O'>{scoreO}</span></h3>
+          :
+          <h3>Jogador 2 <span className='score-O animation'>{scoreO}</span></h3>
+        }
+        
+        
+        
       </div>
       
       {winner &&      

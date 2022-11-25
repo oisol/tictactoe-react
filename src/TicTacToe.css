@@ -77,14 +77,14 @@ footer {
 }
 
 .winner-message {
-  margin: 2rem;
+  margin: 1.5rem;
 }
 
-.winner-message span.O, .current-player span.O {
+.winner-message span.O, .current-player span.O, .score-O {
   color: var(--O-color);
 }
 
-.winner-message span.X, .current-player span.X {
+.winner-message span.X, .current-player span.X, .score-X {
   color: var(--X-color);
 }
 
@@ -108,6 +108,29 @@ button {
   background-color: var(--green);
   color: #fff;
   font-size: 1.2rem;
+}
+
+.score {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0.8rem;
+}
+
+.score span {
+  background-color: #bfc5bf;
+  padding: 0.3rem;
+  border-radius: 6px;
+}
+
+.score-X.animation, .score-O.animation {
+  animation-duration: 0.5s;
+  animation-name: expand;
+} 
+
+@keyframes expand {
+  50% {
+    font-size: 150%;
+  }
 }
 
 @media screen and (max-width: 767px) {
