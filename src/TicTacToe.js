@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import './TicTacToe.css';
 
-// TODO
-// 1.Adicionar contador de pontos via state
-// 
-
 function TicTacToe() {
   // Board inicial
   const emptyBoard = Array(9).fill("");
