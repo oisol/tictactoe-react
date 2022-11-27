@@ -66,6 +66,7 @@ function TicTacToe() {
       [board[2], board[4], board[6]],
     ];
 
+    // Verifica se há casas marcadas de acordo com o array de possibilidades
     possibleWaysToWin.forEach(cells => {
 
       if (cells.every(cell => cell === "O")){
@@ -79,7 +80,6 @@ function TicTacToe() {
       }; 
 
     });
-
   };
 
   // Verificar empate
@@ -96,7 +96,7 @@ function TicTacToe() {
     setWinner(null);
   };
 
-  // Roda a função de checar vencedor para corrigir bug de sempre empate na última jogada
+  // Roda a função de checar vencedor para corrigir bug de sempre empatar na última jogada
   if (winner === 'D'){
     checkWinner()
   }
